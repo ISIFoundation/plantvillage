@@ -1,14 +1,15 @@
 net: "model/GoogLeNet/train_val.prototxt"
-test_iter: 2
-test_interval: 10
-max_iter: 20
+test_iter: 913  # 21917 / 24
+test_interval: 912
+max_iter: 36480 # 912*40
 base_lr: 0.01
 lr_policy: "step"
 gamma: 0.1
 momentum: 0.9
-stepsize: 500
-display: 10
+stepsize: 12160  # 36480/3
+display: 114
 weight_decay: 0.0005
-snapshot: 20
+snapshot: 912
 snapshot_prefix: "model/GoogLeNet/snapshots/snapshots_"
-solver_mode: CPU
+solver_mode: GPU
+solver_type: SGD

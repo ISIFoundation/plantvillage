@@ -21,4 +21,4 @@ $CAFFE_HOME/build/tools/convert_imageset \
     $LMDB_PATH/val.txt \
     $LMDB_PATH/val_lmdb
 
-$CAFFE_ROOT/build/tools/compute_image_mean lmdb/train_lmdb lmdb/mean.binaryproto
+$CAFFE_HOME/build/tools/compute_image_mean lmdb/train_lmdb lmdb/mean.binaryproto

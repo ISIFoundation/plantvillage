@@ -12,7 +12,7 @@ VAL_SET = []
 
 PLANTVILLAGE_PATH="/home/ubuntu/PlantVillage/plantvillage"
 DATA_PATH=PLANTVILLAGE_PATH+"/crowdai"
-LMDB_PATH=PLANTVILLAGE_PATH"/lmdb"
+LMDB_PATH=PLANTVILLAGE_PATH+"/lmdb"
 
 #Distribute the files into Training and Validation sets
 for _image in glob.glob(DATA_PATH + "/*/*"):
