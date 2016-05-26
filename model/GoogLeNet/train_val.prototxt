@@ -910,7 +910,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 1000
+    num_output: 38
     weight_filler {
       type: "xavier"
     }
@@ -1673,7 +1673,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 1000
+    num_output: 38
     weight_filler {
       type: "xavier"
     }
@@ -2386,7 +2386,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 1000
+    num_output: 38
     weight_filler {
       type: "xavier"
     }
@@ -2427,3 +2427,74 @@ layer {
     top_k: 5
   }
 }
+# Accuracy layers
+layer {
+  name: "loss1/top-1"
+  type: "Accuracy"
+  bottom: "loss1/classifier"
+  bottom: "label"
+  top: "loss1/accuracy"
+  include {
+    phase: TEST
+  }
+}
+layer {
+  name: "loss1/top-5"
+  type: "Accuracy"
+  bottom: "loss1/classifier"
+  bottom: "label"
+  top: "loss1/accuracy-top5"
+  include {
+    phase: TEST
+  }
+  accuracy_param {
+    top_k: 5
+  }
+}
+layer {
+  name: "loss2/top-1"
+  type: "Accuracy"
+  bottom: "loss2/classifier"
+  bottom: "label"
+  top: "loss2/accuracy"
+  include {
+    phase: TEST
+  }
+}
+layer {
+  name: "loss2/top-5"
+  type: "Accuracy"
+  bottom: "loss2/classifier"
+  bottom: "label"
+  top: "loss2/accuracy-top5"
+  include {
+    phase: TEST
+  }
+  accuracy_param {
+    top_k: 5
+  }
+}
+layer {
+  name: "loss3/top-1"
+  type: "Accuracy"
+  bottom: "loss3/classifier"
+  bottom: "label"
+  top: "accuracy"
+  include {
+    phase: TEST
+  }
+}
+layer {
+  name: "loss3/top-5"
+  type: "Accuracy"
+  bottom: "loss3/classifier"
+  bottom: "label"
+  top: "accuracy-top5"
+  include {
+    phase: TEST
+  }
+  accuracy_param {
+    top_k: 5
+  }
+}
+
