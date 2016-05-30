@@ -10,7 +10,7 @@ layer {
   transform_param {
     mirror: true
     crop_size: 256
-    #mean_file: "lmdb/mean.binaryproto"
+    mean_file: "lmdb/mean.binaryproto"
   }
   data_param {
     source: "lmdb/train_lmdb"
@@ -29,7 +29,7 @@ layer {
   transform_param {
     mirror: false
     crop_size: 256
-    #mean_file: "lmdb/mean.binaryproto"
+    mean_file: "lmdb/mean.binaryproto"
   }
   data_param {
     source: "lmdb/val_lmdb"
