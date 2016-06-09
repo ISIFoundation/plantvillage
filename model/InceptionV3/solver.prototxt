@@ -1,7 +1,7 @@
 net: "model/InceptionV3/train_val.prototxt"
-test_iter: 913  # 21917 / 24
-test_interval: 912
-max_iter: 36480 # 912*40
+test_iter: 1824  # 21917 / 24
+test_interval: 1824
+max_iter: 3648000 # 912*400
 base_lr: 0.072
 lr_policy: "step"
 type: "RMSProp"
@@ -11,8 +11,8 @@ gamma: 0.94
 stepsize: 12160  # 36480/3
 display: 114
 weight_decay: 0.0001
-snapshot: 912
+snapshot: 1824
 snapshot_prefix: "model/InceptionV3/snapshots/snapshots_"
 solver_mode: GPU
 device_id: 0
-iter_size: 2 # 16*2=32
+iter_size: 4 # 16*2=32

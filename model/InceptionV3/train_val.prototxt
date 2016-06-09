@@ -9,12 +9,13 @@ layer {
   }
   transform_param {
     mirror: true
-    crop_size: 299
-    mean_file: "lmdb/mean.binaryproto"
+    crop_size: 150
+    #mean_file: "lmdb/mean.binaryproto"
+    mean_value: 116
   }
   data_param {
     source: "lmdb/train_lmdb"
-    batch_size: 16
+    batch_size: 5
     backend: LMDB
   }
 }
@@ -28,18 +29,33 @@ layer {
   }
   transform_param {
     mirror: false
-    crop_size: 299
-    mean_file: "lmdb/mean.binaryproto"
+    crop_size: 150
+    # mean_file: "lmdb/mean.binaryproto"
+    mean_value: 116
   }
   data_param {
     source: "lmdb/val_lmdb"
-    batch_size: 5
+    batch_size: 4
     backend: LMDB
   }
-}layer {
+}
+
+layer {
+  name: "upsample", type: "Deconvolution"
+  bottom: "data" top: "upsample"
+  convolution_param {
+    kernel_size: 4 stride: 2
+    num_output: 3 group: 3
+    pad: 1
+    weight_filler: { type: "bilinear" } bias_term: false
+  }
+  param { lr_mult: 0 decay_mult: 0 }
+}
+
+layer {
   name: "conv_conv2d"
   type: "Convolution"
-  bottom: "data"
+  bottom: "upsample"
   top: "conv_conv2d"
   convolution_param {
     bias_term: false
